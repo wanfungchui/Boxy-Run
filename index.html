@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
+		<script type="text/javascript" src="js/three.min.js"></script>
+        <script type="text/javascript" src="js/game.js"></script>
+		<link href="style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="panel">
+			<div class="game-title">
+				<div class="title">boxy run</div>
+				<div class="byline">marathon of madness</div>
+			</div>
+			<div class="stat">
+				<label>Score</label>
+				<p id="score">0</p>
+			</div>
+			<table id="controls">
+			  	<tr>
+			    	<td>Up:</td>
+			    	<td>Jump</td>
+			  	</tr>
+			  	<tr>
+			    	<td>Left:</td>
+			    	<td>Left lane switch</td>
+			  	</tr>
+			  	<tr>
+			    	<td>Right:</td>
+			    	<td>Right lane switch</td>
+			  	</tr>
+			  	<tr>
+			    	<td>p:</td>
+			    	<td>Pause</td>
+			  	</tr>
+			</table>
+			<div class="animate-flicker" id="variable-content">Press any button to begin</div>
+			<div id="description">NO SPACES. Max. 14 alphanumeric chars, can include '@' and '_'.</div>
+			<input id="player-name" type="text" placeholder="Your Display Name">
+			<button id="submit-button" type="button">Submit your score and view the leaderboard</button>
+		</div>
+		<div id="world"></div>
+			
+		</div>
+	</body>
+</html>
