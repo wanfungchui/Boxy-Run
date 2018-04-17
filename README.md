@@ -2,7 +2,7 @@
 
 A Three.js survival game inspired by "Temple Run", developed for educational purposes for [Bit By Bit](http://littlebitbybit.org/).
 
-![animation](https://gfycat.com/ifr/CarefulCharmingBug)
+![animation](https://thumbs.gfycat.com/CarefulCharmingBug-size_restricted.gif)
 
 # Usage
 
