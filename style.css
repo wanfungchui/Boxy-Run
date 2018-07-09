@@ -52,6 +52,13 @@ html, body {
     margin-top:0.5em;
 }
 
+a {
+    font-family: 'Playfair Display', serif;
+    letter-spacing:0.2em;
+    font-weight:600;
+    text-decoration: none;
+}
+
 table {
     width: 100%;
     box-sizing: border-box;
@@ -108,39 +115,6 @@ td:nth-child(2) {
     line-height:150%;
 }
 
-#description {
-    text-align: center;
-    box-sizing: border-box;
-    width: 100%;
-    color: grey;
-    font-size:0.7em;
-    font-weight:100;
-    margin-top: 2em;
-}
-
-#player-name {
-    box-sizing: border-box;
-    width: 100%;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    font-size:1em;
-    font-weight:100;
-    line-height:150%;
-    margin-top: 0.2em;
-    text-align: center;
-}
-
-#submit-button {
-    margin-top: 0.5em;
-    padding-left: 0.2em;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    font-size:1em;
-    font-weight:100;
-    width: 100%;
-    box-sizing: border-box;
-}
-
 @keyframes flickerAnimation {
   0%   { opacity:1; }
   50%  { opacity:0; }
@@ -166,8 +140,8 @@ td:nth-child(2) {
 }
 
 .animate-flicker {
-   -webkit-animation: flickerAnimation 3s infinite;
-   -moz-animation: flickerAnimation 3s infinite;
-   -o-animation: flickerAnimation 3s infinite;
-    animation: flickerAnimation 3s infinite;
+   -webkit-animation: flickerAnimation 1.5s infinite;
+   -moz-animation: flickerAnimation 1.5s infinite;
+   -o-animation: flickerAnimation 1.5s infinite;
+    animation: flickerAnimation 1.5s infinite;
 }

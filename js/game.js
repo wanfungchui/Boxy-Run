@@ -5,10 +5,6 @@
  * ----
  * Simple Temple-Run-esque game, created with love by Wan Fung Chui.
  *
- * TODOS:
- * - Add concept of lives before game over
- * - Powerups like invincibility, extra lives, double points, fog eliminators, coins
- *
  */
 
 /**
@@ -179,10 +175,6 @@ function World() {
 		score = 0;
 		difficulty = 0;
 		document.getElementById("score").innerHTML = score;
-		document.getElementById("controls").style.visibility = "visible";
-		document.getElementById("description").style.visibility = "hidden";
-		document.getElementById("player-name").style.visibility = "hidden";
-		document.getElementById("submit-button").style.visibility = "hidden";
 
 		// Begin the rendering loop.
 		loop();
@@ -270,27 +262,50 @@ function World() {
     			variableContent.style.visibility = "visible";
     			variableContent.innerHTML = 
     				"Game over! Press the down arrow to try again.";
-    			document.getElementById("description").style.visibility = "visible";
-    			var playerName = document.getElementById("player-name");
-    			playerName.style.visibility = "visible";
-    			var submitButton = document.getElementById("submit-button");
-    			submitButton.style.visibility = "visible";
-    			submitButton.addEventListener("click", function() {
-    				var url1 = "http://gmscoreboard.com/handle_score.php?tagid=";
-    				var gameTagID = "5ad2163e2d8dc15237176942380";
-    				var url2 = "&player=";
-    				var player = playerName.value;
-    				var url3 = "&score=";
-    				var url = url1 + gameTagID + url2 + player + url3 + score;
-    				var submissionWindow = window.open(url, '_blank');
-    				var start = new Date().getTime();
-    				   var end = start;
-    				   while (end < start + 3000) {
-    				     end = new Date().getTime();
-    				}
-    				submissionWindow.close();
-    				window.open("http://gmscoreboard.com/boxyrun", '_blank');
-				});
+    			var table = document.getElementById("ranks");
+    			var rankNames = ["Typical Engineer", "Couch Potato", "Weekend Jogger", "Daily Runner",
+    				"Local Prospect", "Regional Star", "National Champ", "Second Mo Farah"];
+    			var rankIndex = Math.floor(score / 15000);
+
+				// If applicable, display the next achievable rank.
+				if (score < 124000) {
+					var nextRankRow = table.insertRow(0);
+					nextRankRow.insertCell(0).innerHTML = (rankIndex <= 5)
+						? "".concat((rankIndex + 1) * 15, "k-", (rankIndex + 2) * 15, "k")
+						: (rankIndex == 6)
+							? "105k-124k"
+							: "124k+";
+					nextRankRow.insertCell(1).innerHTML = "*Exceed to unlock*";
+				}
+
+				// Display the achieved rank.
+				var achievedRankRow = table.insertRow(0);
+				achievedRankRow.insertCell(0).innerHTML = (rankIndex <= 6)
+					? "".concat(rankIndex * 15, "k-", (rankIndex + 1) * 15, "k").bold()
+					: (score < 124000)
+						? "105k-124k".bold()
+						: "124k+".bold();
+				achievedRankRow.insertCell(1).innerHTML = (rankIndex <= 6)
+					? "Congrats! You're a ".concat(rankNames[rankIndex], "!").bold()
+					: (score < 124000)
+						? "Congrats! You're a ".concat(rankNames[7], "!").bold()
+						: "Congrats! You exceeded the creator's high score of 123790 and beat the game!".bold();
+
+    			// Display all ranks lower than the achieved rank.
+    			if (score >= 120000) {
+    				rankIndex = 7;
+    			}
+    			for (var i = 0; i < rankIndex; i++) {
+    				var row = table.insertRow(i);
+    				row.insertCell(0).innerHTML = "".concat(i * 15, "k-", (i + 1) * 15, "k");
+    				row.insertCell(1).innerHTML = rankNames[i];
+    			}
+    			if (score > 124000) {
+    				var row = table.insertRow(7);
+    				row.insertCell(0).innerHTML = "105k-124k";
+    				row.insertCell(1).innerHTML = rankNames[7];
+    			}
+
 			}
 
 			// Update the scores.
