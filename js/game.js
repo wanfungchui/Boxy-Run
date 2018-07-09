@@ -275,7 +275,7 @@ function World() {
 						: (rankIndex == 6)
 							? "105k-124k"
 							: "124k+";
-					nextRankRow.insertCell(1).innerHTML = "*Exceed to unlock*";
+					nextRankRow.insertCell(1).innerHTML = "*Score within this range to earn the next rank*";
 				}
 
 				// Display the achieved rank.
